@@ -79,7 +79,7 @@ Navigate to `https://gemini-watermark-remover-codex.netlify.app`
 
 ---
 
-## 👤 Developer Credits
+## 👨‍💻 Developer Credits
 
 - **Lead Developer**: **Kawdhitha Nirmal**
 - **Engineering Team**: **Cyber yakku | Codex Developers**
