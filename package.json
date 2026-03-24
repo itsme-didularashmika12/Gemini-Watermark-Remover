@@ -1,12 +1,15 @@
 {
-  "name": "telegram-netlify-bot",
+  "name": "gemini-watermark-remover-bot",
   "version": "1.0.0",
   "private": true,
-  "description": "Telegram bot webhook handlers for Netlify Functions",
+  "description": "Telegram bot that removes Gemini AI watermarks using Netlify AI Gateway",
   "scripts": {
     "check": "node --check netlify/functions/telegram-webhook.mjs && node --check netlify/functions/set-webhook.mjs"
   },
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0"
   }
 }
