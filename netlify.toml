@@ -1,0 +1,7 @@
+[build]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/telegram-webhook"
+  to = "/.netlify/functions/telegram-webhook"
+  status = 200

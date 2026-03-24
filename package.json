@@ -1,0 +1,12 @@
+{
+  "name": "telegram-netlify-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Telegram bot webhook handlers for Netlify Functions",
+  "scripts": {
+    "check": "node --check netlify/functions/telegram-webhook.mjs && node --check netlify/functions/set-webhook.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

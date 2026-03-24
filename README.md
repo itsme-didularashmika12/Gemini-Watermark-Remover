@@ -1,91 +1,42 @@
-# ✨ Gemini Watermark Removal System
+# Telegram Netlify Bot Starter
 
-<p align="center">
-  <img src="assets/apple-touch-icon.png" width="128" height="128" alt="Gemini Watermark Removal Logo">
-</p>
+This repository is now structured as a **Telegram bot webhook** project designed for deployment on the **Netlify free plan**.
 
-<p align="center">
-  <strong>The ultimate automated solution for cleaning AI-generated artwork.</strong><br>
-  Built with privacy and performance in mind using Puppeteer & Express.
-</p>
+## What it does
 
----
+- Receives Telegram webhook updates through a Netlify Function.
+- Verifies requests with Telegram's webhook secret header.
+- Handles `/start` and image messages.
+- Echoes uploaded images back to the user to confirm bot + webhook setup.
+- Includes a helper function to register the webhook.
 
-## 📸 Before and After
+## Project structure
 
-| Before Removal | After Removal |
-| :---: | :---: |
-| ![Original Image](assets/Gemini_Generated_Image_Sample_Reduced_Size.jpg) | ![Processed Image](assets/Gemini_Generated_Image_Sample_no_watermark_Reduced_Size.jpg) |
-| *Original Gemini Image with Watermark* | *Cleaned High-Resolution Version* |
+- `netlify/functions/telegram-webhook.mjs` → Main Telegram update handler.
+- `netlify/functions/set-webhook.mjs` → Helper endpoint that calls Telegram `setWebhook`.
+- `netlify.toml` → Functions directory and pretty webhook route redirect.
+- `package.json` → Node metadata and syntax-check command.
 
----
+## Deploy on Netlify (Free Plan)
 
-## 🚀 Features
+1. Push this repository to GitHub.
+2. In Netlify, create a new site from your GitHub repo.
+3. Set these environment variables in **Site configuration → Environment variables**:
+   - `TELEGRAM_BOT_TOKEN` (from BotFather)
+   - `TELEGRAM_WEBHOOK_SECRET` (any long random string)
+   - `NETLIFY_SITE_URL` (example: `https://your-site.netlify.app`)
+4. Deploy.
+5. Open this URL once to register webhook:
+   - `https://your-site.netlify.app/.netlify/functions/set-webhook`
+6. Send `/start` or an image to your bot in Telegram.
 
-- **Double Input Mode**: Support for direct image URLs and binary file uploads.
-- **Privacy First**: Local browser-based processing (via Puppeteer headlessly).
-- **Stealth Extraction**: Bypasses bot detection on major image hosting platforms.
-- **Automatic Optimization**: Specifically tuned for Google User Content (`=s0`) scaling.
-- **Auto-Cleanup**: Temporary and output files are automatically purged every 15 minutes.
+## Local checks
 
----
-
-## 📡 API Documentation
-
-Access the live tester at: `https://gemini-watermark-remover-codex.netlify.app/api`
-
-### 1. URL Interface (GET/POST)
-Clean images using a publicly accessible link.
-
-**Endpoint:** `/api/remove`
-**Method:** `GET` | `POST`
-**Parameter:** `url` (String)
-
-**Sample JSON Response:**
-```json
-{
-  "status": "success",
-  "download_url": "https://gemini-watermark-remover-codex.netlify.app/download/63e1_processed.png",
-  "expiry": "15 minutes",
-  "creator": "Kawdhitha Nirmal",
-  "team": "Cyber yakku | Codex Developers"
-}
-```
-
-### 2. File Interface (POST)
-Upload a raw image file directly.
-
-**Endpoint:** `/api/upload`
-**Method:** `POST`
-**Body:** `multipart/form-data`
-**Field:** `image` (Binary File)
-
----
-
-## 🛠️ Installation & Setup
-
-1. **Install Dependencies**:
 ```bash
-npm install
+npm run check
 ```
 
-2. **Start the Server**:
-```bash
-npm start
-```
+## Notes
 
-3. **Access the Tool**:
-Navigate to `https://gemini-watermark-remover-codex.netlify.app`
-
----
-
-## 👨‍💻 Developer Credits
-
-- **Lead Developer**: **Kawdhitha Nirmal**
-- **Engineering Team**: **Cyber yakku | Codex Developers**
-
----
-
-<p align="center">
-  &copy; 2026 Gemini Watermark Removal Engine. All rights reserved.
-</p>
+- This starter intentionally focuses on webhook infrastructure and bot wiring for Netlify.
+- Add your own image-processing logic in `netlify/functions/telegram-webhook.mjs` where the photo handling branch exists.
